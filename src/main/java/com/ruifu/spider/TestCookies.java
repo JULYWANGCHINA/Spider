@@ -15,7 +15,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import util.PropertiesUtil;
-
+/**
+ * 
+ * @author July.Wang
+ *
+ */
 public class TestCookies {
 
 	public static void main(String[] args) {
@@ -23,8 +27,8 @@ public class TestCookies {
 		System.setProperty("webdriver.chrome.driver", chromeDriverPath.getAbsolutePath());
 		WebDriver webDriver = new ChromeDriver();
 		webDriver.get("https://www.iteye.com/");
-//		writeCookies(webDriver);
-//		getCookies(webDriver);
+		writeCookies(webDriver);
+		getCookies(webDriver);
 	}
 
 	public static void writeCookies(WebDriver webDriver) {
@@ -36,7 +40,7 @@ public class TestCookies {
 
 		webDriver.findElement(By.id("button")).click();
 
-		File cookieFile = new File(PropertiesUtil.getProperty(PropertiesUtil.FILE_PATH)+"csdn.cookie.txt");
+		File cookieFile = new File(PropertiesUtil.getProperty(PropertiesUtil.FILE_PATH)+"cookie.txt");
 
 		try {
 			cookieFile.delete();
@@ -64,7 +68,7 @@ public class TestCookies {
 		BufferedReader bufferedReader;
 		webDriver.get("https://www.iteye.com");
 		try {
-			File cookieFile = new File(PropertiesUtil.getProperty(PropertiesUtil.FILE_PATH)+"csdn.cookie.txt");
+			File cookieFile = new File(PropertiesUtil.getProperty(PropertiesUtil.FILE_PATH)+"cookie.txt");
 			FileReader fileReader = new FileReader(cookieFile);
 			bufferedReader = new BufferedReader(fileReader);
 

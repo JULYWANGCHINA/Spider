@@ -5,10 +5,14 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 
+ * @author July.Wang
+ *
+ */
 public class PropertiesUtil {
 
 	private static Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);

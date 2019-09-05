@@ -20,7 +20,11 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+/**
+ * 
+ * @author July.Wang
+ *
+ */
 public class HandleImage {
 	
 	public static String handleVerifyCodeImg(WebDriver driver, String verifyCodeId) throws Throwable {

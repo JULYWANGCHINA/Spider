@@ -8,6 +8,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+/**
+ * 
+ * @author July.Wang
+ *
+ */
 public class BrowserUtil {
 
 	public static WebDriver getChromeDriver() {
@@ -45,7 +50,8 @@ public class BrowserUtil {
 	}
 
 	public static WebDriver getIEDriver() {
-		System.setProperty("webdriver.ie.driver", PropertiesUtil.getProperty(PropertiesUtil.DIRVER_PATH) + "IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver",
+				PropertiesUtil.getProperty(PropertiesUtil.DIRVER_PATH) + "IEDriverServer.exe");
 		// 代码关闭IE一些配置
 		DesiredCapabilities dc = DesiredCapabilities.internetExplorer();
 		dc.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);

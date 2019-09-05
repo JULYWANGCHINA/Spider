@@ -2,10 +2,14 @@ package com.ruifu.spider;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import util.BrowserUtil;
 
+/**
+ * 
+ * @author July.Wang
+ *
+ */
 public class TestBrowser {
 
 	public static void main(String[] args) {
@@ -17,9 +21,9 @@ public class TestBrowser {
 		WebDriver chromeDriver = BrowserUtil.getChromeDriver();
 		chromeDriver.get("https://www.baidu.com/");
 
-		 JavascriptExecutor js = (JavascriptExecutor) chromeDriver;
-		 js.executeScript("window.open('https://www.csdn.net/')");
-		 System.out.println(chromeDriver.getWindowHandles().size());
+		JavascriptExecutor js = (JavascriptExecutor) chromeDriver;
+		js.executeScript("window.open('https://www.csdn.net/')");
+		System.out.println(chromeDriver.getWindowHandles().size());
 	}
 
 }
