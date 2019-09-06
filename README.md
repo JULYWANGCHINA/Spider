@@ -15,17 +15,18 @@
 java爬虫 httpclient htmlunit selenium 比较
 ---
  * httpclient 
-
-    httpclient 是 HttpClient 是 Apache Jakarta Common 下的子项目 ，支持常用的各种协议，相对比较底层，很多java项目的互联网编程都是依赖于该包 。
+    * httpclient 是 HttpClient 是 Apache Jakarta Common 下的子项目 ，支持常用的各种协议，相对比较底层，很多java项目的互联网编程都是依赖于该包 。
 
  * htmlunit
-
-  相当与一个没有ui的浏览器，本身就是对httpclient进行封装。
+	- 相当与一个没有ui的浏览器，本身是对httpclient进行封装，加上其有对于js，css等的加载，很多时候这个是非常必要的。
+	- 内置Rhinojs浏览器引擎，没有哪一款浏览器使用该内核。
+	- 在HtmlUnit的使用上，发现经常性报内存溢出，js/css渲染错误等各种问题。
 
  * selenium 
+	- selenium相对而言则更暴力，他对于每一个浏览器提供不同的插件（htmlunit的也有），可以完全模仿人对于浏览器操作，在使用selenium时，你真的可以看到一个个页面的打开关闭，看到鼠标的移动，文字的键入，所以用selenium ，只要是人能在操作的，他都能做到，缺点就是速度是最慢的，而且你还得在电脑里安装相应的浏览器，要有专门的驱动程序
 
-   这个最早是基于firfox的自动化测试软件，现在也支持其他的浏览器，比如ie，chrome 等，同时提供了多语言的接口，如python，java 等，其功能是完全模仿浏览器行为，对于爬虫而言是最后的利器。
-
+ * 如何选择
+	- 从开发效率来说，应该是selenium>htmlunit>httpclient (htmlunit 对于js的支持不是特别稳定，有时候也会莫名其妙报错)，但是代码运行的速度则是反过来的，尤其js加载和页面的仿真，慢的真的不是一点半点，所以在可以的情况下，尽量使用数度快的工具吧，比如你就是爬一个静态页面，用httpclient就很好，反之如果js很简单就用htmlunit 或者找到相应的js文件，用js引擎去执行，实在没办法了，再考虑selenium吧
 
 
 
