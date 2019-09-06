@@ -7,6 +7,8 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import util.BrowserUtil;
 import util.HttpClientUtil;
@@ -24,8 +26,10 @@ public class TestHttpClient {
 	public static void driverAndHttpClient() throws Exception{
 		String url = "https://channel.duobaocrab.074pr8.cn/#/login";
 		WebDriver driver = BrowserUtil.getChromeDriver();
+//		WebDriver driver = new HtmlUnitDriver();
+//		WebDriver driver = BrowserUtil.getPhantomjs();
 		driver.get(url);
-		
+		System.out.println(driver.getPageSource());
 		driver.findElement(By.id("name")).sendKeys(PropertiesUtil.getProperty("doubao.user"));
 		driver.findElement(By.id("password")).sendKeys(PropertiesUtil.getProperty("doubao.pwd"));
 		driver.findElement(By.xpath("//*[@id='root']/div/div/div/form/button")).click();

@@ -1,11 +1,15 @@
 package util;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
@@ -62,6 +66,30 @@ public class BrowserUtil {
 		driver.manage().window().maximize();
 		// 设置隐性等待时间
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		return driver;
+	}
+	
+	public static WebDriver getPhantomjs(){
+		String userAgent = "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/40.0.2214.91 Safari/535.1";
+		DesiredCapabilities caps = DesiredCapabilities.phantomjs();
+
+		ArrayList<String> cliArgsCap = new ArrayList<String>();
+		cliArgsCap.add("--load-images=true");
+		cliArgsCap.add("--webdriver-loglevel=NONE");
+		caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+
+		caps.setJavascriptEnabled(true);
+		caps.setCapability("takesScreenshot", true);
+		caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+				PropertiesUtil.getProperty(PropertiesUtil.DIRVER_PATH) + "phantomjs.exe");
+		caps.setCapability(PhantomJSDriverService.PHANTOMJS_PAGE_CUSTOMHEADERS_PREFIX + "Accept-Language", "zh-CN");
+		caps.setCapability(PhantomJSDriverService.PHANTOMJS_PAGE_SETTINGS_PREFIX + "userAgent", userAgent);
+		caps.setCapability(PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS, "--webdriver-loglevel=NONE");
+
+		caps.setPlatform(Platform.WINDOWS);
+		caps.setBrowserName("chrome");
+		caps.setVersion("55");
+		PhantomJSDriver driver = new PhantomJSDriver(caps);
 		return driver;
 	}
 }
